@@ -2,6 +2,17 @@
 import 'dart:math';
 
 main(List<String> args) {
+
+  //级联语法
+  var p = Person()
+    ..name = 'laoli'
+    ..height = 1.88
+    ..eat()
+    ..run();
+
+  p.changeName('hanmeimei');
+
+
   Student s = Student('xiaoming');
   // s = Student();
   print(s);
@@ -21,10 +32,10 @@ class Person {
     print("$name run");
   }
   eat(){
-    print('$name eat');
+    print('$this.name eat');
   }
   study(){
-    print('$name study');
+    print('$this.height $name study');
   }
   //Dart的开发风格中，在方法中通常使用属性时，会省略this，
   //但是有命名冲突时，this不能省略；
@@ -45,7 +56,7 @@ class Student {
   //   print('call Student() ');
   // }
 
-  //不同同👆 共存。因为dart不支持函数重载
+  //不能同👆 共存。因为dart不支持函数重载
   // Student(String name) {
   //   this.name = name;
   //   print('call Student(name) ');
@@ -55,6 +66,8 @@ class Student {
   Student(this.name) {
     print('call Student(this.name) ');
   }
+
+  //如何实现这种方式的构造方法？
   // initWithName(String name){
 
   // }
@@ -64,6 +77,11 @@ class Student {
     this.name = name;
     this.num = num;
   }
+  Student.initWithNameAndNum(this.name,this.num) {
+  
+  }
+
+
   //重定向构造函数
   // Redirecting constructors can't have a body.
   // Try removing the body, or not making this a redirecting 
@@ -71,7 +89,7 @@ class Student {
   // Student.initWithNameAndNum(String name,int num):this(name) {
   //   this.num = num;
   // }
-  Student.initWithNameAndNum(String name, var num):this(name);
+  Student.initWithNameAndNumAndScore(String name, var num):this(name);
 
   @override
   String toString() {
@@ -94,15 +112,4 @@ class Point {
   String toString() {
     return "x:$x y:$y distance:$distance";
   }
-}
-
-creatPerson() {
-  //级联语法
-  var p = Person()
-    ..name = 'xiaoming'
-    ..height = 1.88
-    ..eat()
-    ..run();
-
-  p.changeName('hanmeimei');
 }
