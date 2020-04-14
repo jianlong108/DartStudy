@@ -98,18 +98,26 @@ class Student {
 }
 
 class Point {
-  var x;
-  var y;
-  final distance;
+  // final x;
+  // final y;
+  // final distance;
   //初始化列表
-  Point(this.x,this.y):distance=sqrt(x*x + y*y);
+  // Point(this.x,this.y):distance=sqrt(x*x + y*y);
 
+  // Point(x,y) {
+  //   this.x = x;
+  //   this.y = y;
+  // }
+
+  // var x;
+  // var y;
+  // var distance;
   // Point(this.x,this.y) {
   //   distance = sqrt(x*x+y*y);
   // }
 
-  @override
-  String toString() {
-    return "x:$x y:$y distance:$distance";
-  }
+  // @override
+  // String toString() {
+  //   return "x:$x y:$y distance:$distance";
+  // }
 }
