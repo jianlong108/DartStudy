@@ -1,8 +1,11 @@
-main(List<String> args) {
-  var p = Person('laoli',18);
-  print(p);
-  p.run();
-}
+// main(List<String> args) {
+//   var p = Person('laoli',18);
+//   print(p);
+//   p.run();
+
+//   var h = Hero('laoli',58);
+//   h.smoke();
+// }
 
 class Animal {
   int age;
@@ -81,3 +84,113 @@ class Reactangle extends Shape {
 //抽象类不能实例化.
 
 //抽象类中的抽象方法必须被子类实现, 抽象类中的已经被实现方法, 可以不被子类重写.
+
+
+// Dart中的接口比较特殊, 没有一个专门的关键字来声明接口.
+
+// 默认情况下，定义的每个类都相当于默认也声明了一个接口，可以由其他的类来实现(因为Dart不支持多继承)
+
+// 在开发中，我们通常将用于给别人实现的类声明为抽象类:
+
+abstract class Runner {
+  run();
+}
+
+abstract class Flyer {
+  fly();
+}
+
+class SuperMan implements Runner, Flyer {
+  @override
+  run() {
+    print('超人在奔跑');
+  }
+
+  @override
+  fly() {
+    print('超人在飞');
+  }
+}
+
+/* Mixin混入
+在通过implements实现某个类时，类中所有的方法都必须被重新实现(无论这个类原来是否已经实现过该方法)。
+
+但是某些情况下，一个类可能希望直接复用之前类的原有实现方案，怎么做呢?
+
+使用继承吗？但是Dart只支持单继承，那么意味着你只能复用一个类的实现。
+
+Dart提供了另外一种方案: Mixin混入的方式
+
+除了可以通过class定义类之外，也可以通过mixin关键字来定义一个类。
+
+只是通过mixin定义的类用于被其他类混入使用，通过with关键字来进行混入。
+*/
+
+mixin Smoker {
+  smoke() {
+    print('抽烟');
+  }
+}
+
+mixin Drinker {
+  drink() {
+    print('喝酒');
+  }
+}
+
+// implements的方式要求必须对其中的方法进行重新实现
+// class SuperMan implements Runner, Flyer {}
+
+class Hero with Smoker, Drinker {
+  var name;
+  var age;
+  Hero(this.name,this.age);
+}
+
+/*
+前面我们在类中定义的成员和方法都属于对象级别的, 在开发中, 我们有时候也需要定义类级别的成员和方法
+
+在Dart中我们使用static关键字来定义:
+*/
+
+
+main(List<String> args) {
+  var stu = Student();
+  stu.name = 'laoli';
+  stu.sno = 110;
+  stu.study();
+
+  Student.time = '早上8点';
+  // stu.time = '早上9点'; 错误做法, 实例对象不能访问类成员  
+  Student.attendClass();  // stu.attendClass(); 错误做法, 实现对象不能‍访问类方法
+
+  print(Colors.red);
+  print(Colors.red.index);
+  print(Colors.green.index);
+  print(Colors.blue.index);
+
+  print(Colors.values);
+}
+
+class Student {
+  String name;
+  int sno;
+
+  static String time;
+
+  study() {
+    print('$name在学习');
+  }
+
+  static attendClass() {
+    print('去上课');
+  }
+}
+
+//枚举
+
+enum Colors {
+  red,
+  green,
+  blue
+}
