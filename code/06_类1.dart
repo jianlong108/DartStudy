@@ -1,21 +1,21 @@
 main(List<String> args) {
   
-  var p = Person();
-  print(p);
+  // var p = Person();
+  // print(p);
 
   // const s1 = Student(1);
   // const s2 = Student(2);
   // print(identical(s1,s2)); 
 
-  var s1 = Student(2);
-  var s2 = Student(3);
+  // var s1 = Student(2);
+  // var s2 = Student(3);
   // var s3 = Student.initWithNum(4);
 
-  print(identical(s1,s2));
+  // print(identical(s1,s2));
   // print(identical(s2,s3));
   var dog = Dog('red');
-  dog.color = 'yellow';
-  print(dog.color);
+  dog.setColor('yellow');
+  print(dog._color);
   // print(object)
 }
 
@@ -33,6 +33,13 @@ class Person {
 // class Student {
 //   final int num;
 //   const Student(this.num);
+//   // const Student(num){
+//   //   this.num = num;
+//   // }
+
+//   // tmp(){
+//   //   return instance;
+//   // }
 // }
 
 //如果一个构造函数并不总是返回一个新的对象，则使用 factory 来定义 这个构造函数。
@@ -58,17 +65,17 @@ class Student {
 
 // getter setter
 class Dog {
-  String color;
-  Dog(this.color); 
+  String _color;
+  Dog(this._color); 
 
   get getColor {
     print('Dog getter');
-    return color;
+    return _color;
   }
 
   set setColor(String color) {
     print('Dog setter');
-    this.color = color;
+    _color = color;
   }
 
 }

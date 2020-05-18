@@ -1,9 +1,8 @@
 import 'dart:io';
 
 main(List<String> args) {
-  
   //控制台 打印
-  print("hello world");
+  print("hello dart");
 
   // 变量定义
   String name = 'xiaoli';
@@ -12,8 +11,9 @@ main(List<String> args) {
   //常量
   final bool isMan = true;
   const String familyName = "li";
-  print("name:$name age:$age height:$height isMan:$isMan familyname:$familyName");
+  print("name:${name} age:$age height:$height isMan:$isMan familyname:$familyName");
 
+  print('-------------10年后-----------');
   //10年后
   name = "laoli";
   age = 28;
@@ -22,8 +22,6 @@ main(List<String> args) {
   // age = '28周岁';
 
   print("name:$name age:$age height:$height isMan:$isMan");
-  
-
   //类型推导
   // var/dynamic/const/final 变量名称 = 赋值;
   dynamic score = 99; //不常用
@@ -65,33 +63,32 @@ main(List<String> args) {
   }else{
     print("老李不是男人");
   }
-  
-  //简单数据转换
+  //简单数据转换 int -> String
   var ageStr = age.toString();
   print("agestr:$ageStr type:${ageStr.runtimeType}");
-  var heightStr = height.toString();
 
-  print("heightStr:$heightStr type:${heightStr.runtimeType}");
-
-  var goodnum = int.parse('100');
-  print("goodnum:$goodnum type: ${goodnum.runtimeType}");
-  //会四舍五入
+  // double->String 注意四舍五入
   var scoreStr = 92.345.toStringAsFixed(2);
   print(scoreStr);
 
+  // String -> int
+  var goodnum = int.parse('100');
+  print("goodnum:$goodnum type: ${goodnum.runtimeType}");
+
   //Dart字符串是UTF-16编码单元的序列。使用 '''字符串:
 
-  var ourname = ''' 
-中国人👍
-    阿里人
-    小二
-  ''';
+  var ourname = '''
+      中国人👍⚽️
+          阿里人👍
+            小二😸
+                ''';
   print(ourname);
 
 }
 
 //简单的函数定义
-int getNum() {
+int getNum() 
+{
   return 108;
 }
 

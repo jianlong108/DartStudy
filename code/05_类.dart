@@ -57,10 +57,10 @@ class Student {
   // }
 
   //不能同👆 共存。因为dart不支持函数重载
-  // Student(String name) {
-  //   this.name = name;
-  //   print('call Student(name) ');
-  // }
+  Student(String name) {
+    this.name = name;
+    print('call Student(name) ');
+  }
 
   //初始化列表  等同于👆的方式
   Student(this.name) {
@@ -78,7 +78,7 @@ class Student {
     this.num = num;
   }
   Student.initWithNameAndNum(this.name,this.num) {
-  
+
   }
 
 
@@ -97,6 +97,7 @@ class Student {
   }
 }
 
+const p = point
 class Point {
   // final x;
   // final y;
